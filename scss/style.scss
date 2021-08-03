@@ -54,7 +54,7 @@ ul, li, body, h1, h2, h3, h4, h5, h6, p {
      position: absolute;
      top: 0;
      left: -344px;
-     transition: all cubic-bezier(0.785, 0.135, 0.15, 0.86) 400ms;
+     transition: all 400ms;
      &-in {
           width: 100%;
           height: 65px;
@@ -212,7 +212,7 @@ ul, li, body, h1, h2, h3, h4, h5, h6, p {
           align-items: center;
           background: #fff;
           border-radius: 0;
-          transition: all 200ms;
+          transition: all 400ms;
      }
 
      & div {
@@ -225,17 +225,27 @@ ul, li, body, h1, h2, h3, h4, h5, h6, p {
      
 }
 
+.active {
+     background: none;
+}
+
 .active span{
      &:first-child {
-          position: absolute;
-          transform: rotate(45deg);
+          position: relative;
+          z-index: 100;
+          transform: rotate(45deg) translateY(3px) translateX(3px);
      }
      &:nth-child(2) {
+          position: relative;
+          z-index: 0;
           opacity: 0;
+          transform: translateX(-22px);
      }
      &:last-child {
-          position: absolute;
-          transform: rotate(-45deg);
+          position: relative;
+          z-index: 100;
+          transform: rotate(-45deg) translateY(-4px) translateX(4px);
+
      }
 }
 
@@ -255,11 +265,29 @@ ul, li, body, h1, h2, h3, h4, h5, h6, p {
      padding: 8px 17px;
      border-radius: 4px;
      padding-left: 0;
+     transition: all linear 300ms;
 
      & img {
           width: 13.5px;
           height: 10px;
           margin-right: 10px;
+     }
+
+     & .img-svg {
+          transition: all linear 300ms;
+     }
+
+     &:hover {
+          border-color: #2D9CDB;
+          color: #2D9CDB;
+
+          & .img-svg {
+               margin-right: 3px;
+          }
+
+          & .img-svg path {
+               fill: #2D9CDB;
+          }
      }
 }
 
@@ -532,6 +560,6 @@ ul, li, body, h1, h2, h3, h4, h5, h6, p {
           width: 100%;
      }
      .menu-active {
-          width: 320px;
+          width: 100%;
      }
 }
